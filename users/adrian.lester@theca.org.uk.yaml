@@ -2,3 +2,13 @@ name: 'Adrian Lester'
 super: true
 id: 071c7123-3915-4c72-b79c-13c21fc2598f
 password_hash: $2y$12$xqj/Wp.CnQ4.VX/BYbeBleOIWQnNnLNvEQvlCsHgBVsqNmS/MgqlG
+preferences:
+  collections:
+    dok_2x:
+      view: tree
+    dok_3x:
+      view: tree
+    pages:
+      view: tree
+    releases:
+      view: tree

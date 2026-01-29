@@ -13,7 +13,7 @@
         "php": "^8.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "statamic/cms": "^6.0",
+        "statamic/cms": "^6.0@beta",
         "torchlight/engine": "^0.1.0"
     },
     "require-dev": {

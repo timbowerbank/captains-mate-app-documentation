@@ -1,0 +1,127 @@
+@layer properties,
+       theme,
+       base,
+       prose.default,
+       prose.child,
+       components,
+       ui.components,
+       ui.modifiers,
+       utilities;
+
+@import "tailwindcss";
+
+@import "./base/prose/prose.css";
+@import "./base/forms.css";
+
+@import "./ui/button.css";
+@import "./ui/toggle.css";
+@import "./ui/select.css";
+@import "./ui/input.css";
+@import "./ui/fileinput.css";
+@import "./ui/textarea.css";
+@import "./ui/radio.css";
+@import "./ui/checkbox.css";
+@import "./ui/label.css";
+@import "./ui/heading.css";
+@import "./ui/accordion.css";
+
+@import "./components/markdown-heading-permalink.css";
+@import "./components/markdown-toc.css";
+@import "./components/hint.css";
+@import "./components/codegroup.css";
+@import "./components/project-logo.css";
+
+@import "./utilities/container.css";
+@import "./utilities/scrollbar.css";
+@import "./utilities/overlay.css";
+
+@import "./vendor/alpinejs.css";
+
+@import "./themes/default.css";
+@import "./themes/black.css";
+@import "./themes/white.css";
+@import "./themes/forest.css";
+@import "./themes/papyrus.css";
+@import "./themes/moonlight.css";
+@import "./themes/coffee.css";
+@import "./themes/amethyst.css";
+
+@custom-variant contrast-more {
+  &:where([data-contrast="more"], [data-contrast="more"] *) {
+    @slot;
+  }
+
+  @media (prefers-contrast: more) {
+    @slot;
+  }
+}
+
+@custom-variant dark {
+  &:where(
+    [data-theme="black"],
+    [data-theme="black"] *,
+    [data-theme="forest"],
+    [data-theme="forest"] *,
+    [data-theme="coffee"],
+    [data-theme="coffee"] *,
+    [data-theme="moonlight"],
+    [data-theme="moonlight"] *,
+
+  ) {
+    @slot;
+  }
+}
+
+/* You could also easily create variants for each of your themes
+for fine grained control. Left this in as an example. */
+@custom-variant forest {
+  &:where([data-theme="forest"], [data-theme="forest"] *) {
+    @slot;
+  }
+}
+
+@theme {
+  --font-default: "Inter Variable", "sans-serif";
+  --font-mono: "JetBrains Mono Variable", monospace;
+
+  --text-2xs: calc((12 / 16) * 1rem);
+  --text-2xs--line-height: 1.8;
+  --text-xs: calc((14 / 16) * 1rem);
+  --text-xs--line-height: 1.8;
+  --text-sm: calc((15 / 16) * 1rem);
+  --text-sm--line-height: calc(1.8 / 1);
+  --text-base: calc((16 / 16) * 1rem);
+  --text-base--line-height: 1.8;
+  --text-lg: calc((18 / 16) * 1rem);
+  --text-lg--line-height: 1.6;
+  --text-xl: calc((20 / 16) * 1rem);
+  --text-xl--line-height: 1.5;
+
+  --spacing-gutter: 2rem;
+
+  --animate-shake: shake 0.2s ease-out 3;
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(-2px);
+    }
+    50% {
+      transform: translateX(2px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+
+    @media (min-width: theme(--breakpoint-lg)) {
+      overscroll-behavior-y: none;
+    }
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+}

@@ -81,7 +81,7 @@ for fine grained control. Left this in as an example. */
 }
 
 @theme {
-  --font-default: "Inter Variable", "sans-serif";
+  --font-default: "Fustat Variable", "sans-serif";
   --font-mono: "JetBrains Mono Variable", monospace;
 
   --text-2xs: calc((12 / 16) * 1rem);

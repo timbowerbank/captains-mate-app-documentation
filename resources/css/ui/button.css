@@ -39,7 +39,8 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
     font-size: var(--btn-font-size);
-    font-weight: var(--font-weight-medium);
+    font-weight: 800;
+    font-variation-settings: 'wght' 800;
     color: var(--btn-color);
 
     &:focus-visible {
@@ -58,6 +59,21 @@
       --btn-background: color-mix(
         in oklab,
         var(--color-primary),
+        var(--color-base-200) 20%
+      );
+    }
+  }
+}
+
+.btn-secondary {
+  @layer ui.modifiers {
+    --btn-color: var(--color-secondary-content);
+    --btn-background: var(--color-secondary);
+
+    @variant btn-interact {
+      --btn-background: color-mix(
+        in oklab,
+        var(--color-secondary),
         var(--color-base-200) 20%
       );
     }

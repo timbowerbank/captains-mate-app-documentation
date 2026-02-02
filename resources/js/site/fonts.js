@@ -10,5 +10,5 @@
  *
  */
 
-import '@fontsource-variable/inter';
+import '@fontsource-variable/fustat';
 import '@fontsource-variable/jetbrains-mono';

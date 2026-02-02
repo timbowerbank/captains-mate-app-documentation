@@ -3,8 +3,10 @@
   --color-base-200: oklch(99.779% 0.00104 11.135);
   --color-base-300: oklch(100% 0.00011 271.152);
   --color-base-content: oklch(0% 0 0);
-  --color-primary: oklch(0.5878 0.2289 22.48);
+  --color-primary: oklch(0.374 0.141 264.5); /* #1B458F navy blue */
   --color-primary-content: oklch(100% 0.00011 271.152);
+  --color-secondary: oklch(0.55 0.24 22); /* #E51636 red */
+  --color-secondary-content: oklch(100% 0.00011 271.152);
 
   --color-important-base: oklch(0.8711 0.0457 279.94);
   --color-error-base: oklch(0.9232 0.0455 347.88);
@@ -18,7 +20,7 @@
   --field-border-color: --alpha(var(--color-base-content) / 20%);
 
   --radius-box: 0rem;
-  --radius-control: 0rem;
+  --radius-control: 0.5rem; /* 8px */
   --radius-notch: 0rem;
 
   --border-width: 1px;

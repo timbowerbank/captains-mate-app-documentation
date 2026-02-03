@@ -7,7 +7,7 @@
     }
 
     @variant prose-strong {
-      font-weight: 600;
+      font-weight: 800;
       color: var(--prose-strong-color);
     }
 
@@ -25,7 +25,7 @@
 
     @variant prose-headings {
       color: var(--prose-heading-color);
-      font-weight: 600;
+      font-weight: 800;
     }
 
     @variant prose-h1 {

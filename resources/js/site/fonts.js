@@ -11,4 +11,3 @@
  */
 
 import '@fontsource-variable/fustat';
-import '@fontsource-variable/jetbrains-mono';

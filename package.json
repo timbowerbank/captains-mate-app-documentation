@@ -25,7 +25,6 @@
         "@alpinejs/collapse": "^3.14.9",
         "@alpinejs/focus": "^3.14.9",
         "@fontsource-variable/fustat": "^5.1.1",
-        "@fontsource-variable/jetbrains-mono": "^5.2.8",
         "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package",
         "alpinejs": "^3.14.9",
         "laravel-precognition-alpine": "^0.8.0"

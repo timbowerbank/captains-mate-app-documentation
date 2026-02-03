@@ -82,7 +82,7 @@ for fine grained control. Left this in as an example. */
 
 @theme {
   --font-default: "Fustat Variable", "sans-serif";
-  --font-mono: "JetBrains Mono Variable", monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --text-2xs: calc((12 / 16) * 1rem);
   --text-2xs--line-height: 1.8;

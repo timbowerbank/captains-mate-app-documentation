@@ -4,7 +4,7 @@ blueprint: page
 title: Guide
 author: 071c7123-3915-4c72-b79c-13c21fc2598f
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1770111828
+updated_at: 1770113383
 ---
 # Guide to using the documentation site
 
@@ -12,6 +12,7 @@ updated_at: 1770111828
 * Login at /cp/auth/login
 * Please note: we're using the free edition of Statamic, a limitation is that it only comes with one user.
 * Please do not change the password without consulting with Adrian Lester at The Cruising Association.
+* Once logged in navigate to /cp/dashboard/
 
 ## Creating a page
 * Navigate to collections

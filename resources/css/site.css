@@ -120,8 +120,4 @@ for fine grained control. Left this in as an example. */
       overscroll-behavior-y: none;
     }
   }
-
-  @view-transition {
-    navigation: auto;
-  }
 }

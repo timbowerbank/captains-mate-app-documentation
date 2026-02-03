@@ -11,6 +11,27 @@
         {{ partial:helpers/theme }}
 
         {{ vite src="resources/js/site/index.js|resources/css/site.css" }}
+
+        {{# View Transition API - Page transitions #}}
+        <style>
+            @view-transition {
+                navigation: auto;
+            }
+            ::view-transition-old(root) {
+                animation: fade-out 0.25s ease-out forwards;
+            }
+            ::view-transition-new(root) {
+                animation: fade-in 0.25s ease-in forwards;
+            }
+            @keyframes fade-out {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+            @keyframes fade-in {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        </style>
     </head>
     <body class="antialiased font-default text-base bg-base-100">
 

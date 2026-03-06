@@ -23,7 +23,11 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Statamic::vite('app', [
+	if (config('app.force_https', false)) {
+	        $this->app['request']->server->set('HTTPS', 'on');
+    	}
+        
+	Statamic::vite('app', [
             'input' => [
                 'resources/js/cp/index.js',
                 'resources/css/cp.css',

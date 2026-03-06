@@ -3,6 +3,6 @@ icon: programming-code-block
 template: docs/show
 layout: docs/layout
 revisions: false
-route: "{{ !parent_uri ?= '4.3/' }}{{ parent_uri }}/{{ slug }}"
+route: "{{ !parent_uri ?= 'v4.3/' }}{{ parent_uri }}/{{ slug }}"
 structure:
   root: true

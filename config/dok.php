@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'resource_location' => base_path('content/docs'),
+    'resource_location' => base_path('content'),
 
     /*
     |--------------------------------------------------------------------------

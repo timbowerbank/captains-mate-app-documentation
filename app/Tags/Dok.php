@@ -33,18 +33,20 @@ class Dok extends Tags
         // Gotta use raw Markdown, not preprocessed by Statamic
         $rawMarkdown = $this->params['markdown'] ?? '';
 
-        // Create a fresh replica CommonMark environment
-        $environment = new Environment(config('statamic.markdown.configs.default'));
+	// Create a fresh replica CommonMark environment
+	$config = config('statamic.markdown.configs.default', []);
+	$environment = new Environment($config);
 
-        // Add core extensions and permalink support
-        $environment->addExtension(new CommonMarkCoreExtension);
-        $environment->addExtension(new HeadingPermalinkExtension);
-        $environment->addExtension(new \League\CommonMark\Extension\TableOfContents\TableOfContentsExtension);
-        $environment->addExtension(new \League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension);
-        $environment->addExtension(new \League\CommonMark\Extension\Attributes\AttributesExtension);
+	// Add core extensions and permalink support
+	$environment->addExtension(new CommonMarkCoreExtension);
+	$environment->addExtension(new HeadingPermalinkExtension);
+	$environment->addExtension(new \League\CommonMark\Extension\TableOfContents\TableOfContentsExtension);
+	$environment->addExtension(new \League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension);
+	$environment->addExtension(new \League\CommonMark\Extension\Attributes\AttributesExtension);
 
-        // Convert document
-        $document = new MarkdownParser($environment)->parse($rawMarkdown);
+	// Convert document
+	$converter = new \League\CommonMark\MarkdownConverter($environment);
+	$document = $converter->convert($rawMarkdown)->getDocument();
 
         $headings = [];
 

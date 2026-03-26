@@ -4,7 +4,7 @@ blueprint: page
 title: Guide
 author: 071c7123-3915-4c72-b79c-13c21fc2598f
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1770113383
+updated_at: 1772814562
 ---
 # Guide to using the documentation site
 
@@ -42,3 +42,33 @@ updated_at: 1770113383
 * This Statamic Starter Kit comes with a Laravel Artisan command line tool to scaffold new releases.
 * Please see: [https://dok.fawnsoftware.com/dok/3.x/content-overview](https://dok.fawnsoftware.com/dok/3.x/content-overview)
 * For this project we only need to add releases to the project CAptains Mate App.
+
+## Git and GitHub
+
+These files differ from local and production
+
+```
+modified:   app/Providers/AppServiceProvider.php
+modified:   app/Tags/Dok.php
+modified:   composer.lock
+modified:   config/app.php
+modified:   config/dok.php
+modified:   content/collections/captains_mate_app_43.yaml
+modified:   content/collections/captains_mate_app_43/flutter-packages.md
+modified:   content/collections/captains_mate_app_43/flutter-version.md
+modified:   content/collections/pages/docs.md
+modified:   package-lock.json
+modified:   public/.htaccess
+modified:   resources/views/home.antlers.html
+modified:   resources/views/layout.antlers.html
+modified:   routes/web.php
+```
+
+### Production
+
+* Content lives on production branch
+* SSH setup to manually push to origin/production
+
+### Local
+* Local version deploys changes from main branch
+* Merge from main into production

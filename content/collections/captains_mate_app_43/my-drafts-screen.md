@@ -4,7 +4,8 @@ blueprint: captains_mate_app_43
 title: 'My Drafts Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774533879
+updated_at: 1780406249
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
 # MyDraftsScreen
 
@@ -26,7 +27,7 @@ updated_at: 1774533879
 
 ```
 MyDraftsScreen (ConsumerStatefulWidget)
-├── Scaffold
+├── TcaSafeScaffold
 │   ├── AppBar
 │   │   └── Title: "DRAFTS"
 │   │
@@ -234,12 +235,12 @@ The delete dialog result is used without null check:
 ```dart
 var shouldDelete = await showDialog(...);
 
-if (shouldDelete) {  // Could be null if dialog dismissed
+if (shouldDelete) {  // Could be null if dialog dismissed without tapping a button
   // ...
 }
 ```
 
-This works because `null` is falsy, but explicit `shouldDelete == true` would be clearer.
+`showDialog` returns `T?`, so `shouldDelete` is `bool?`. In Dart, `null` is not falsy — `if (null)` throws a null check error at runtime. This doesn't currently crash because `TcaDialog` likely prevents outside-tap dismissal in practice, but it is fragile. Using `if (shouldDelete == true)` would be explicit and safe.
 
 ---
 

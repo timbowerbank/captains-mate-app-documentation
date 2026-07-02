@@ -1,12 +1,13 @@
 ---
 id: 857a0564-a18d-4c7f-99b5-c25b075cbdfb
 blueprint: captains_mate_app_43
-title: 'Content Screen'
+title: 'Create and Edit Location Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774535068
+updated_at: 1780400840
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
-# ContentScreen
+# Create and Edit Location Content Screen
 
 **File:** `lib/src/screens/create_edit_location/content_screen.dart`
 **Route:** `/create_location/content`
@@ -24,7 +25,7 @@ This screen is used both for **creating new locations** (entered from `SetLocati
 ## UI Simplified Structure
 
 ```
-Scaffold
+TcaSafeScaffold
  ├── AppBar
  │    ├── Title: "CREATE LOCATION" or "EDIT LOCATION" (based on shouldPop)
  │    ├── automaticallyImplyLeading: false (no back button)

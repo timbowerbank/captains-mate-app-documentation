@@ -4,7 +4,8 @@ blueprint: captains_mate_app_43
 title: 'Create Edit Report Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774533678
+updated_at: 1777653444
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
 # CreateEditReportScreen
 
@@ -28,7 +29,7 @@ All modes support an optional single image attachment.
 ## UI Simplified Structure
 
 ```
-Scaffold
+TcaSafeScaffold
  ├── AppBar ("ADD REPORT" or "EDIT REPORT")
  │
  └── body: SingleChildScrollView > Form

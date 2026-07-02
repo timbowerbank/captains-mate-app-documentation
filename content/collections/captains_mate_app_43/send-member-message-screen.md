@@ -4,7 +4,8 @@ blueprint: captains_mate_app_43
 title: 'Send Member Message Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774534780
+updated_at: 1780408019
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
 # SendMemberMessageScreen
 
@@ -26,7 +27,7 @@ updated_at: 1774534780
 
 ```
 SendMemberMessageScreen (StatefulWidget)
-├── Scaffold
+├── TcaSafeScaffold
 │   ├── AppBar
 │   │   └── Title: "NEW MESSAGE"
 │   │

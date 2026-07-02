@@ -4,7 +4,8 @@ blueprint: captains_mate_app_43
 title: 'My Membership Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774533976
+updated_at: 1780405926
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
 # MyMembershipScreen
 
@@ -26,7 +27,7 @@ updated_at: 1774533976
 
 ```
 MyMembershipScreen (StatelessWidget)
-├── Scaffold
+├── TcaSafeScaffold
 │   ├── AppBar
 │   │   └── Title: "MY MEMBERSHIP"
 │   │

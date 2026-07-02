@@ -4,7 +4,8 @@ blueprint: captains_mate_app_43
 title: 'Report Issue Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774535621
+updated_at: 1780407866
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
 # ReportIssueScreen
 
@@ -15,14 +16,14 @@ updated_at: 1774535621
 
 ## Purpose
 
-A simple form screen for users to report issues or bugs to the app developers. The user enters a text description, which is submitted to Sentry as a user-feedback event associated with a captured message. Device information is shown at the top via a `DeviceInfoHeader` widget. On successful submission the screen pops and shows a success snackbar. A privacy notice explains that the description and any stored log file will be sent to CoreBlue via Sentry.
+A simple form screen for users to report issues or bugs to the app developers. The user enters a text description, which is submitted to Sentry as a user-feedback event associated with a captured message. Device information is shown at the top via a `DeviceInfoHeader` widget. On successful submission the screen pops and shows a success snackbar. A privacy notice explains that the description and any stored log file will be sent to the app's developers via Sentry.
 
 ---
 
 ## UI Simplified Structure
 
 ```
-Scaffold
+TcaSafeScaffold
  ├── AppBar
  │    └── Text ("REPORT AN ISSUE")
  │
@@ -151,6 +152,6 @@ User taps "SUBMIT"
 
 4. **`_reportController.text.trim()` called but original text logged** (lines 95, 108): The `TcaLog.info` call logs the untrimmed text (with leading/trailing whitespace), while the Sentry feedback sends the trimmed text. This inconsistency is minor but could cause confusion when comparing logs to Sentry events.
 
-5. **Privacy notice is hardcoded text** (lines 73-76): The privacy notice mentions "CoreBlue" and "Sentry" by name. If the error reporting provider changes, this text needs manual updating. It also mentions "log file from the app" being sent, but the log file upload is actually a separate action (from `ViewStoredLogScreen`), not automatically included with this report.
+5. **Privacy notice is hardcoded text** (lines 73-76): The privacy notice mentions "Sentry" by name. If the error reporting provider changes, this text needs manual updating. It also mentions "log file from the app" being sent, but the log file upload is actually a separate action (from `ViewStoredLogScreen`), not automatically included with this report.
 
 6. **No character limit on description**: The textarea has no maximum length constraint. A very long description could exceed Sentry's feedback message size limit, potentially causing silent truncation or rejection.

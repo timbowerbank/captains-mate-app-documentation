@@ -4,7 +4,8 @@ blueprint: captains_mate_app_43
 title: 'Members List Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774535311
+updated_at: 1780405575
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
 # MembersListScreen
 
@@ -22,7 +23,7 @@ A searchable, segmented directory of CA members and boats. The user switches bet
 ## UI Simplified Structure
 
 ```
-Scaffold
+TcaSafeScaffold
  ├── AppBar
  │    └── Text ("MEMBERS" or "BOATS", changes with active tab)
  │
@@ -141,16 +142,14 @@ User taps a boat row
 
 ## Known Caveats / Tech-Debt Notes
 
-1. **`SelectedMemberRoute` reused for boats** (line 151): The boat item navigates to `ViewBoatScreen` using `SelectedMemberRoute(id: boat.id!)` rather than a dedicated `SelectedBoatRoute`. This works because both route argument classes carry just an `id` field, but it's semantically misleading. `ViewBoatScreen` itself actually expects `SelectedBoatRoute` — if the types were ever enforced at runtime with a strict cast, this would crash. *(Note: checking `view_boat_screen.dart` line 47 confirms it casts to `SelectedBoatRoute`, meaning this is a **latent bug** — the cast will fail at runtime if the types don't match. However, both classes likely have compatible structure.)*
+1. **Provider returns `List<dynamic>`** (line 81, provider line 19): `memberListProvider` is typed as `FutureProvider<List, SearchFilterOptions>` (raw `List`), so `TcaAsyncDataWrapper` receives `List<dynamic>`. Items are cast to `Member` or `Boat` at the list item level (lines 92-93). This loses type safety — a type mismatch would only be caught at runtime.
 
-2. **Provider returns `List<dynamic>`** (line 81, provider line 19): `memberListProvider` is typed as `FutureProvider<List, SearchFilterOptions>` (raw `List`), so `TcaAsyncDataWrapper` receives `List<dynamic>`. Items are cast to `Member` or `Boat` at the list item level (lines 92-93). This loses type safety — a type mismatch would only be caught at runtime.
+2. **Search filtering uses `fullName` via dynamic dispatch** (provider line 30): The search filter accesses `element.fullName` on a dynamic `List`. Both `Member` and `Boat` have a `fullName` property, but this is not enforced by a shared interface or base class. If a model's property name changed, the error would only surface at runtime.
 
-3. **Search filtering uses `fullName` via dynamic dispatch** (provider line 30): The search filter accesses `element.fullName` on a dynamic `List`. Both `Member` and `Boat` have a `fullName` property, but this is not enforced by a shared interface or base class. If a model's property name changed, the error would only surface at runtime.
+3. **`dispose()` calls `super.dispose()` before `_searchController.dispose()`** (lines 31-34): The conventional order is to dispose controllers first, then call `super.dispose()`. The current order is reversed, which can cause issues if the framework tries to access the controller after super disposal. In practice, this rarely causes problems but is technically incorrect.
 
-4. **`dispose()` calls `super.dispose()` before `_searchController.dispose()`** (lines 31-34): The conventional order is to dispose controllers first, then call `super.dispose()`. The current order is reversed, which can cause issues if the framework tries to access the controller after super disposal. In practice, this rarely causes problems but is technically incorrect.
+4. **Search not debounced at widget level**: While `TcaSearchBar` may have internal debouncing, the `onSearch` callback triggers a `setState` that rebuilds the `Consumer` and re-fires the `FutureProvider` on every callback. If the search bar does not debounce, this could cause excessive Hive reads during rapid typing.
 
-5. **Search not debounced at widget level**: While `TcaSearchBar` may have internal debouncing, the `onSearch` callback triggers a `setState` that rebuilds the `Consumer` and re-fires the `FutureProvider` on every callback. If the search bar does not debounce, this could cause excessive Hive reads during rapid typing.
+5. **No empty state message**: `TcaAsyncDataWrapper` handles the loading state, but if the search returns zero results, the `ListView.builder` simply renders zero items with no "No results found" message.
 
-6. **No empty state message**: `TcaAsyncDataWrapper` handles the loading state, but if the search returns zero results, the `ListView.builder` simply renders zero items with no "No results found" message.
-
-7. **Unused `Consumer` in `_buildTabOption`** (lines 105-114): The tab label widget is wrapped in a `Consumer` (with the `watch` parameter name from old Riverpod syntax), but it doesn't use `ref` to read any providers. The `Consumer` is unnecessary and adds a redundant rebuild scope.
+6. **Unused `Consumer` in `_buildTabOption`** (lines 105-114): The tab label widget is wrapped in a `Consumer` (with the `watch` parameter name from old Riverpod syntax), but it doesn't use `ref` to read any providers. The `Consumer` is unnecessary and adds a redundant rebuild scope.

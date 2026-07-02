@@ -4,7 +4,8 @@ blueprint: captains_mate_app_43
 title: 'Help Support Screen'
 use_synced_content: false
 updated_by: 071c7123-3915-4c72-b79c-13c21fc2598f
-updated_at: 1774533777
+updated_at: 1777653463
+parent: faa4011a-a306-467e-ac40-635e775f6e76
 ---
 # HelpSupportScreen
 
@@ -33,7 +34,7 @@ This is a read-only screen with no user input beyond tapping external links.
 
 ```
 HelpSupportScreen (StatelessWidget)
-├── Scaffold
+├── TcaSafeScaffold
 │   ├── AppBar
 │   │   └── Title: "HELP / SUPPORT"
 │   │
